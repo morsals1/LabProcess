@@ -4,7 +4,9 @@
 
 int main()
 {
-    LPCWSTR lpszAppName = L"C:\\Users\\st310-11\\Desktop\\меньшиков ПР-32\\AmoForms\\bin\\Debug\\net8.0-windows\\AmoForms.exe";
+    setlocale(LC_ALL, "russian");
+
+    LPCWSTR lpszAppName = L"C:\\Users\\328-8\\Desktop\\menshikov p32\\LabProcess-main\\NewConsol\\Console\\x64\\Debug\\Console.exe";
     STARTUPINFO si;
     PROCESS_INFORMATION piApp;
 
@@ -12,7 +14,7 @@ int main()
     si.cb = sizeof(STARTUPINFO);
 
     int a = -1;
-    printf("Выбери задачу от 1 до 7\n");
+    printf("Выбери задачу от 1 до 2\n");
     std::cin >> a;
 
 
@@ -21,11 +23,16 @@ int main()
     {
     case 1:
         if (!CreateProcess(lpszAppName, NULL, NULL, NULL, FALSE,
-            CREATE_NEW_CONSOLE, NULL, NULL, &si, &piApp)) {
+            CREATE_NEW_CONSOLE, NULL, NULL, &si, &piApp)) 
+        {
+            _cputs("Новый процесс не удалось создать.\n");
+            _cputs("Провертье имя процесса.\n");
+            _cputs("Нажмите любую символ для завершения.\n");
+            _getch();
             return 0;
         }
 
-        _cputs("The new process is created\n");
+        _cputs("Новый процесс создан.\n");
         std::cout << "PID " << piApp.dwProcessId << "\n";
         std::cout << "Дескриптор " << piApp.hProcess << "\n";
 
@@ -33,24 +40,23 @@ int main()
 
         CloseHandle(piApp.hThread);
         CloseHandle(piApp.hProcess);
-
         break;
     case 2:
 
         if (!CreateProcess(lpszAppName, NULL, NULL, NULL, FALSE,
             CREATE_NEW_CONSOLE, NULL, NULL, &si, &piApp))
         {
-            _cputs("The new process is not created.\n");
-            _cputs("Check a name of the process.\n");
-            _cputs("Press any key to finish.\n");
+            _cputs("Новый процесс не удалось создать.\n");
+            _cputs("Провертье имя процесса.\n");
+            _cputs("Нажмите любую символ для завершения.\n");
             _getch();
             return 0;
         }
-        _cputs("The new process is created.\n");
+        _cputs("Новый процесс создан.\n");
             while (true)
             {
                 char c;
-                _cputs("Input 't' to terminate the new console process: ");
+                _cputs("Введите 't' чтобы прекратить процесс консоли: ");
                 c = _getch();
                 if (c == 't')
                 {
@@ -59,19 +65,10 @@ int main()
                     break;
                 }
             }
+
+        _cputs("Процесс завершил свою работу\n");
         CloseHandle(piApp.hThread);
         CloseHandle(piApp .hProcess);
-
-        break;
-    case 3:
-        break;
-    case 4:
-        break;
-    case 5:
-        break;
-    case 6:
-        break;
-    case 7:
         break;
     default:
         printf("Вань ты дурак совсем");

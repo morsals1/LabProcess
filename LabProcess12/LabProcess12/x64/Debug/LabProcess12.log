@@ -1,0 +1,5 @@
+﻿  LabProcess12.cpp
+C:\Users\328-8\Desktop\menshikov p32\LabProcess-main\LabProcess12\LabProcess12\LabProcess12.cpp(29,143): warning C4311: приведение типов: усечение указателя из "HANDLE" в "int"
+C:\Users\328-8\Desktop\menshikov p32\LabProcess-main\LabProcess12\LabProcess12\LabProcess12.cpp(29,143): warning C4302: приведение типов: усечение из "HANDLE" к "int"
+C:\Users\328-8\Desktop\menshikov p32\LabProcess-main\LabProcess12\LabProcess12\LabProcess12.cpp(13,8): warning C4101: IDThread: неиспользованная локальная переменная
+C:\Users\328-8\Desktop\menshikov p32\LabProcess-main\LabProcess12\LabProcess12\LabProcess12.cpp(29): error C4700: использована неинициализированная локальная переменная "lpszComLine"

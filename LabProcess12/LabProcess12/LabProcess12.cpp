@@ -2,35 +2,25 @@
 #include <conio.h>
 #include <iostream>
 
-int main()
-{
-    setlocale(LC_ALL, "russian");
+int main() {
+    const char* file = "C:\\Users\\st310-11\\Desktop\\меньшиков ПР-32\\LabProcess-main\\LabProcess12\\race.txt";
 
-    const char* file = "race.txt";
-
-    STARTUPINFOA si;
+    STARTUPINFO si = { sizeof(si) };
     PROCESS_INFORMATION pi;
-    SECURITY_ATTRIBUTES sa;
+    SECURITY_ATTRIBUTES sa = { sizeof(SECURITY_ATTRIBUTES), NULL, TRUE };
+
     HANDLE hFile = CreateFileA(file, GENERIC_READ, FILE_SHARE_READ,
-        nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
+        &sa, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
 
     if (hFile == INVALID_HANDLE_VALUE) {
         std::cerr << "Ошибка открытия файла: " << GetLastError() << std::endl;
         return 1;
     }
 
-    sa.nLength = sizeof(SECURITY_ATTRIBUTES);
-    sa.lpSecurityDescriptor = NULL;
-    sa.bInheritHandle = TRUE;
+    wchar_t cmdline[256];
+    swprintf_s(cmdline, L"C:\\Users\\st310-11\\Desktop\\меньшиков ПР-32\\LabProcess-main\\LabProcess12child\\x64\\Debug\\LabProcess12child.exe %d", (int)hFile);
 
-    ZeroMemory(&si, sizeof(STARTUPINFOA));
-    si.cb = sizeof(STARTUPINFOA);
-
-    char cmdLine[256];
-    sprintf_s(cmdLine, "ChildProcess.exe %d", (int)hFile);
-
-    if (!CreateProcessA(NULL, cmdLine, NULL, NULL, TRUE, CREATE_NEW_CONSOLE, NULL, NULL, &si, &pi))
-    {
+    if (!CreateProcess(NULL, cmdline, NULL, NULL, TRUE, CREATE_NEW_CONSOLE, NULL, NULL, &si, &pi)) {
         std::cerr << "Ошибка создания процесса: " << GetLastError() << std::endl;
         CloseHandle(hFile);
         return 1;

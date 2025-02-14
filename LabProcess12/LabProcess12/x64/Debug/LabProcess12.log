@@ -1,4 +1,4 @@
 ﻿  LabProcess12.cpp
-C:\Users\artur\Desktop\LabProcess-main\LabProcess12\LabProcess12\LabProcess12.cpp(30,47): warning C4311: приведение типов: усечение указателя из "HANDLE" в "int"
-C:\Users\artur\Desktop\LabProcess-main\LabProcess12\LabProcess12\LabProcess12.cpp(30,47): warning C4302: приведение типов: усечение из "HANDLE" к "int"
-  LabProcess12.vcxproj -> C:\Users\artur\Desktop\LabProcess-main\LabProcess12\x64\Debug\LabProcess12.exe
+C:\Users\st310-11\Desktop\меньшиков ПР-32\LabProcess-main\LabProcess12\LabProcess12\LabProcess12.cpp(21,160): warning C4311: приведение типов: усечение указателя из "HANDLE" в "int"
+C:\Users\st310-11\Desktop\меньшиков ПР-32\LabProcess-main\LabProcess12\LabProcess12\LabProcess12.cpp(21,160): warning C4302: приведение типов: усечение из "HANDLE" к "int"
+  LabProcess12.vcxproj -> C:\Users\st310-11\Desktop\меньшиков ПР-32\LabProcess-main\LabProcess12\x64\Debug\LabProcess12.exe
